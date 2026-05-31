@@ -1,0 +1,195 @@
+:root {
+  --background: #f4f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #dbe3ef;
+  --primary: #2563eb;
+  --primary-soft: rgba(37, 99, 235, 0.18);
+  --danger: #b91c1c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--background);
+}
+
+.app {
+  width: min(1400px, 95%);
+  margin: 0 auto;
+  padding: 28px 0;
+}
+
+header {
+  margin-bottom: 24px;
+}
+
+header h1 {
+  margin-bottom: 8px;
+  font-size: 2.5rem;
+}
+
+header p {
+  margin: 0;
+  max-width: 750px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card,
+.graph-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 1.1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+.result {
+  margin-top: 18px;
+  padding: 15px;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.result span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.result strong {
+  font-size: 1.8rem;
+}
+
+.error {
+  min-height: 20px;
+  margin-bottom: 0;
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #334155;
+}
+
+.graph-card h2 {
+  margin-bottom: 4px;
+}
+
+.graph-card p {
+  color: var(--muted);
+}
+
+.canvas-wrapper {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: crosshair;
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  background: rgba(15, 23, 42, 0.92);
+  color: white;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  transform: translate(12px, -50%);
+}
+
+.hint {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 950px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+}

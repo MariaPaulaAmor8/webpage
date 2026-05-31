@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C8 Interactive PDF Distributions</title>
+  <link rel="stylesheet" href="styles.css" />
+  <nav>
+    <a href="global.html">Home</a>
+    <a href="indextool.html">Data Modeling (C9)</a>
+</nav>
+</head>
+
+<body>
+  <main class="app">
+    <header>
+      <h1>Interactive PDF Distributions</h1>
+      <p>
+        Modify the parameters, graph the probability density function, calculate
+        probabilities, and shade the selected region.
+      </p>
+    </header>
+
+    <section class="layout">
+      <aside class="controls">
+        <div class="card">
+          <label for="distribution">Distribution</label>
+          <select id="distribution">
+            <option value="uniform">Uniform</option>
+            <option value="triangular">Triangular</option>
+            <option value="linear">Linear</option>
+            <option value="piecewise">Piecewise</option>
+            <option value="normal">Normal</option>
+          </select>
+        </div>
+
+        <div class="card">
+          <h2>Parameters</h2>
+          <div id="parameterForm" class="form-grid"></div>
+          <p id="errorMessage" class="error"></p>
+        </div>
+
+        <div class="card">
+          <h2>Probability</h2>
+
+          <label for="probabilityType">Type</label>
+          <select id="probabilityType">
+            <option value="below">P(X ≤ x)</option>
+            <option value="above">P(X ≥ x)</option>
+            <option value="between">P(x₁ ≤ X ≤ x₂)</option>
+          </select>
+
+          <div class="form-grid">
+            <div>
+              <label id="boundALabel" for="boundA">x</label>
+              <input id="boundA" type="number" step="any" value="0" />
+            </div>
+
+            <div id="boundBContainer">
+              <label for="boundB">x₂</label>
+              <input id="boundB" type="number" step="any" value="1" />
+            </div>
+          </div>
+
+          <div class="result">
+            <span>Probability value</span>
+            <strong id="probabilityValue">—</strong>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Current PDF</h2>
+          <pre id="formulaBox"></pre>
+        </div>
+      </aside>
+
+      <section class="graph-card">
+        <h2 id="graphTitle">Uniform Distribution</h2>
+        <p id="graphSubtitle">PDF graph and shaded probability region</p>
+
+        <div class="canvas-wrapper">
+          <canvas id="pdfCanvas" width="950" height="560"></canvas>
+          <div id="tooltip" class="tooltip" hidden></div>
+        </div>
+
+        <p class="hint">
+          Hover over the graph to inspect values. Click the graph to change the
+          probability bound.
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C9 Distribution Fitting Tool</title>
+  <link rel="stylesheet" href="stylestool.css" />
+  <nav>
+    <a href="global.html">Home</a>
+    <a href="index.html">Simulation (C8)</a>
+</nav>
+</head>
+
+<body>
+  <main class="app">
+    <header class="hero">
+      <p class="tag">C9 Implementation</p>
+      <h1>Distribution Parameter Estimator</h1>
+      <p>
+        Upload or paste numerical data, choose a distribution, estimate its parameters,
+        and compare the fitted PDF with the data histogram.
+      </p>
+    </header>
+
+    <section class="layout">
+      <aside class="panel controls">
+        <section class="block">
+          <h2>1. Input data</h2>
+
+          <label for="fileInput">Upload CSV or TXT file</label>
+          <input id="fileInput" type="file" accept=".csv,.txt" />
+
+          <label for="dataInput">Or paste data manually</label>
+          <textarea
+            id="dataInput"
+            rows="9"
+            placeholder="Example: 4.2, 5.1, 5.7, 6.0, 6.4, 7.2"
+          ></textarea>
+
+          <button id="exampleBtn" type="button">Load example data</button>
+
+          <p id="dataStatus" class="status">No data loaded yet.</p>
+        </section>
+
+        <section class="block">
+          <h2>2. Choose distribution</h2>
+
+          <label for="distributionSelect">Distribution to fit</label>
+          <select id="distributionSelect">
+            <option value="uniform">Uniform distribution</option>
+            <option value="triangular">Triangular distribution</option>
+            <option value="linear">Linear distribution</option>
+            <option value="piecewiseUniform">Piecewise uniform distribution</option>
+            <option value="normal">Normal distribution</option>
+          </select>
+
+          <div id="piecewiseOptions" class="hidden">
+            <label for="pieceCount">Number of piecewise intervals</label>
+            <input id="pieceCount" type="number" min="2" max="12" value="4" />
+          </div>
+
+          <label for="histogramBins">Histogram bins</label>
+          <input id="histogramBins" type="number" min="4" max="40" value="12" />
+
+          <button id="fitBtn" type="button">Fit distribution</button>
+        </section>
+
+        <section class="block">
+          <h2>Required outputs checklist</h2>
+          <ul class="checklist">
+            <li>Estimated parameters</li>
+            <li>Fitted PDF</li>
+            <li>Histogram of uploaded data</li>
+            <li>Histogram and fitted PDF on the same graph</li>
+            <li>Short interpretation of fit reasonableness</li>
+          </ul>
+        </section>
+
+        <section class="block">
+          <h2>Output 1: Estimated parameters</h2>
+          <div id="parametersOutput" class="output">
+            Fit a distribution to display the estimated parameters.
+          </div>
+        </section>
+
+        <section class="block">
+          <h2>Output 5: Fit interpretation</h2>
+          <div id="interpretationOutput" class="output">
+            The interpretation will appear after fitting a model.
+          </div>
+        </section>
+      </aside>
+
+      <section class="graphs">
+        <article class="panel graph-card">
+          <h2>Output 2: Fitted PDF</h2>
+          <p>The estimated probability density function.</p>
+          <canvas id="pdfCanvas" width="950" height="430"></canvas>
+        </article>
+
+        <article class="panel graph-card">
+          <h2>Output 3: Histogram of uploaded data</h2>
+          <p>The uploaded data represented as a density histogram.</p>
+          <canvas id="histogramCanvas" width="950" height="430"></canvas>
+        </article>
+
+        <article class="panel graph-card">
+          <h2>Output 4: Histogram and fitted PDF on the same graph</h2>
+          <p>Direct visual comparison between the data and the fitted model.</p>
+          <canvas id="combinedCanvas" width="950" height="430"></canvas>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script src="apptool.js"></script>
+</body>
+</html>
